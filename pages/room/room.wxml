@@ -1,0 +1,34 @@
+<!--pages/room/room.wxml-->
+<text>pages/room/room.wxml</text>
+
+<!--title-->
+<text> 房间列表 </text>
+
+<!--self-->
+<view>
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <text wx:if="{{ready === 1}}" class="ready">准备</text>
+</view>
+
+
+<!--title-->
+<text> 玩家列表 </text>
+
+<!--other-->
+<view wx:for="{{playerList}}">
+  <image bindtap="bindViewTap" class="userinfo-avatar" src="{{item.avatar_url}}" mode="cover"></image>
+  <text class="userinfo-nickname">{{item.nickname}}</text>
+  <text wx:if="{{item.status === 1}}" class="ready">准备</text>
+</view>
+
+
+<!-- button group -->
+
+<view>
+  <button wx:if="{{role === 'member'}}" bindtap="tapToReady"> 准备</button>
+  <button wx:elif="{{role === 'owner'}}" bindtap="tapToStart"> 开始</button>
+
+  <button></button>
+</view>
+

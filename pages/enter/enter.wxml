@@ -1,0 +1,43 @@
+<!--pages/enter/enter.wxml-->
+<view class="enter-container">
+
+
+  <view wx:if="{{type == 'create'}}"> 
+    <h1>创建房间 </h1>
+
+    <view class="input-section">
+      <view class="section__title">创建房间号：{{createRoomId}}</view>
+        <input id="createRoomId" class="enter-input" bindinput="bindKeyInput" placeholder="创建房间号" />
+    </view>
+
+    <view class="input-section">
+      <view class="section__title">创建房间密码：{{createRoomPassword}}</view>
+        <input id="createRoomPassword" class="enter-input" bindinput="bindKeyInput" placeholder="创建房间密码" />
+    </view>
+
+    <button bindtap="createRoomReq"> 新建房间 </button>
+  </view>
+      
+
+  <view wx:elif="{{type == 'join'}}">
+    <h1>加入房间 </h1>
+    <view class="input-section">
+      <view class="section__title">加入房间号：{{joinRoomId}}</view>
+        <input id="joinRoomId" class="enter-input" bindinput="bindKeyInput" placeholder="加入房间号" />
+    </view>
+
+    <view class="input-section">
+      <view class="section__title">加入房密码：{{joinRoomPassword}}</view>
+        <input id="joinRoomPassword" class="enter-input" bindinput="bindKeyInput" placeholder="加入房密码" />
+    </view>
+
+    <button bindtap="joinRoomReq"> 加入房间 </button>
+  </view>
+
+
+  <view wx:else>
+    <h1> 参数错误 </h1>
+  </view>
+
+</view>
+
