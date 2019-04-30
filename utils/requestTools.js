@@ -5,7 +5,6 @@ const domain = 'https://rp.nladuo.cn/';
 let requestUnify = reqObj => {
 
   // 请求参数加上必带项
-  console.log(app.globalData.userSession)
   reqObj.data.session_key = app.globalData.userSession.session_key;
   reqObj.data.openid = app.globalData.userSession.openid;
   reqObj.data.nickname = app.globalData.userInfo.nickName;

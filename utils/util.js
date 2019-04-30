@@ -14,6 +14,16 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const isNull = str => {
+    if (str == null || str == undefined || str == '') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 module.exports = {
-  formatTime: formatTime
+    formatTime: formatTime,
+    isNull: isNull
 }
