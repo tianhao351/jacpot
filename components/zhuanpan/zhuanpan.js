@@ -87,6 +87,17 @@ Component({
             ]
         },
 
+        gifArray: {
+            type: Array,
+            value: [
+                'http://rp.nladuo.cn/rp_api/static/huangshang.gif',
+                'http://rp.nladuo.cn/rp_api/static/feizi.gif',
+                'http://rp.nladuo.cn/rp_api/static/taijian.gif',
+                'http://rp.nladuo.cn/rp_api/static/gu.gif'
+            ],
+        },
+       
+
         // 限制：最多17个选项， 单个选项最多填10-13个字, 选项名称最多21个字
         awardsConfig: { // 默认的当前转盘选项 
             type: Object,
@@ -316,7 +327,6 @@ Component({
 
                 //转盘停止后的音乐
                 !that.data.musicflg ? '' : stop.play();
-                console.log('xxxxxxjieshu())(())*I()*()*()')
 
                 that.setData({
                     animationData: {},

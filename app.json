@@ -9,7 +9,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "转盘游戏",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

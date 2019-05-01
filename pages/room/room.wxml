@@ -1,15 +1,14 @@
 <!--pages/room/room.wxml-->
-<text>pages/room/room.wxml</text>
 
 <!--title-->
-<text> 房间列表 </text>
+<!-- <text> 房间列表 </text> -->
 
 <!--self-->
-<view>
+<!-- <view>
     <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     <text wx:if="{{ready === 1}}" class="ready">准备</text>
-</view>
+</view> -->
 
 
 <!--title-->
@@ -19,7 +18,12 @@
 <view wx:for="{{playerList}}">
   <image bindtap="bindViewTap" class="userinfo-avatar" src="{{item.avatar_url}}" mode="cover"></image>
   <text class="userinfo-nickname">{{item.nickname}}</text>
-  <text wx:if="{{item.status === 1}}" class="ready">准备</text>
+
+  <text wx:if="{{item.is_creator === true}}" class="ready">房主</text>
+
+  <text wx:elif="{{item.status === 1}}" class="ready">准备</text>
+
+  
 </view>
 
 

@@ -1,8 +1,13 @@
 // pages/room/room.js
 
 let app = getApp();
-
 let self = null;
+
+let openid = '';
+
+// 定时器
+let intervalPlayerID = '';
+let intervalMsgsID = '';
 
 const requestTools = require('../../utils/requestTools.js');
 
@@ -32,17 +37,57 @@ Page({
             userInfo: app.globalData.userInfo
         })
         console.log(this.data);
+
+        console.log('xxsdf', app);
+        openid = app.globalData.userSession.openid;
+        console.log('xx3434234234', openid);
+    },
+
+    redMessage: function (messageId) {
+        requestTools.requestUnify({
+            path: 'rp_api/game/read_msg',
+            data: {
+                msg_id: messageId
+            },
+            success(res) {
+                console.log(res.data)
+                if (res.data.success === true) {
+                    console.log('消息删除成功')
+                }
+                else {
+                }
+            }
+        })
+    },
+
+    getGameResult: function (resultData) {
+        let gameResult = resultData.data[openid];
+        let msgId = resultData._id;
+
+        clearTimeout(intervalPlayerID)
+        clearTimeout(intervalMsgsID)
+
+        this.redMessage(msgId)
+
+
+        wx.navigateTo({
+            url: '../game/game?result=' + gameResult
+        })
+
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onShow: function () {
+        console.log('onshow*****')
         wx.showToast({
             title: '您已成功进入房间',
             icon: 'success',
             duration: 1000
         });
+
+        let that = this;
 
         let pollReqMsgs = {
             path: '/rp_api/game/get_msgs',
@@ -51,15 +96,27 @@ Page({
                 passwd: this.data.roomPassword
             },
             success(res) {
-                if (res.data.success === true) {
+                if (res.data.success === true && res.data.data[res.data.data.length - 1]) {
                     console.log('what the fuck', res.data);
-                }
-                else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 1000
-                    })
+                    let resultData = res.data.data[res.data.data.length - 1];
+                    console.log('xxxx', resultData)
+
+                    switch (resultData.type) {
+                        case 'gameResult':
+                            that.getGameResult(resultData);
+                            break;
+                        case 'userIn':
+                            
+                            break;
+                        case 'userOut':
+                            
+                            break;
+                        case 'statusChange':
+                            
+                            break;
+                        default:
+                            
+                    }
                 }
             }
         }
@@ -79,7 +136,7 @@ Page({
                 }
                 else {
                     wx.showToast({
-                        title: res.data.msg,
+                        title: '请求错误',
                         icon: 'none',
                         duration: 1000
                     })
@@ -87,12 +144,12 @@ Page({
             }
         }
 
-        let intervalPlayerID = setInterval(function () {
+        intervalPlayerID = setInterval(function () {
             requestTools.requestUnify(pollReqPlayer)
         }
             , 2000);
 
-        let intervalMsgsID = setInterval(function () {
+        intervalMsgsID = setInterval(function () {
             requestTools.requestUnify(pollReqMsgs)
         }
             , 2000);
@@ -101,7 +158,7 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onReady: function () {
 
     },
 
@@ -116,7 +173,9 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        console.log("触发卸载事件")
+        clearTimeout(intervalPlayerID)
+        clearTimeout(intervalMsgsID)
     },
 
     /**
@@ -142,7 +201,6 @@ Page({
 
     tapToReady: function () {
         requestTools.requestUnify({
-
             path: 'rp_api/game/update_player_status',
             data: {
                 status: 1
@@ -162,27 +220,24 @@ Page({
         })
     },
     tapToStart: function () {
-        wx.navigateTo({
-            url: '../game/game?result=0'
+        requestTools.requestUnify({
+            path: 'rp_api/game/start_game',
+            data: {
+                room_id: this.data.roomId,
+                passwd: this.data.roomPassword
+            },
+            success(res) {
+                if (res.data.success === true) {
+                    console.log('开始游戏', res)
+                }
+                else {
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1000
+                    })
+                }
+            }
         })
-        // requestTools.requestUnify({
-        //     path: 'rp_api/game/start_game',
-        //     data: {
-        //         room_id: this.data.roomId,
-        //         passwd: this.data.roomPassword
-        //     },
-        //     success(res) {
-        //         if (res.data.success === true) {
-        //             console.log('开始游戏')
-        //         }
-        //         else {
-        //             wx.showToast({
-        //                 title: res.data.msg,
-        //                 icon: 'none',
-        //                 duration: 1000
-        //             })
-        //         }
-        //     }
-        // })
     }
 })
