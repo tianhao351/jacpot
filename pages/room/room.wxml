@@ -9,30 +9,30 @@
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     <text wx:if="{{ready === 1}}" class="ready">准备</text>
 </view> -->
+<view class="room">
+    <view class='player-list'>
+        <!--title-->
+        <text class='room-title'> 玩家列表 </text>
+
+        <!--other-->
+        <view class='palyer-item' wx:for="{{playerList}}">
+            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{item.avatar_url}}" mode="cover"></image>
+            <text class="userinfo-nickname">{{item.nickname}}</text>
+
+            <text wx:if="{{item.is_creator === true}}" class="status">房主</text>
+
+            <text wx:elif="{{item.status === 1}}" class="status">准备</text>
+            <text wx:else class="status"></text>
+        </view>
+    </view>
 
 
-<!--title-->
-<text> 玩家列表 </text>
+    <!-- button group -->
 
-<!--other-->
-<view wx:for="{{playerList}}">
-  <image bindtap="bindViewTap" class="userinfo-avatar" src="{{item.avatar_url}}" mode="cover"></image>
-  <text class="userinfo-nickname">{{item.nickname}}</text>
+    <view class='button-group'>
+        <button wx:if="{{role === 'member'}}" bindtap="tapToReady"> 准备</button>
+        <button wx:if="{{role === 'member'}}" bindtap="tapToUnReady"> 取消准备</button>
 
-  <text wx:if="{{item.is_creator === true}}" class="ready">房主</text>
-
-  <text wx:elif="{{item.status === 1}}" class="ready">准备</text>
-
-  
+        <button wx:elif="{{role === 'owner'}}" bindtap="tapToStart"> 开始</button>
+    </view>
 </view>
-
-
-<!-- button group -->
-
-<view>
-  <button wx:if="{{role === 'member'}}" bindtap="tapToReady"> 准备</button>
-  <button wx:elif="{{role === 'owner'}}" bindtap="tapToStart"> 开始</button>
-
-  <button></button>
-</view>
-

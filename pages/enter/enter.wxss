@@ -1,1 +1,12 @@
 /* pages/enter/enter.wxss */
+.enter-container {
+    padding-top: 200rpx;
+}
+
+.btn {
+  width: 65%;
+  margin-top: 250rpx;
+}
+
+
+

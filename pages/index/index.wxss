@@ -1,6 +1,11 @@
 /**index.wxss**/
 
-
 .usermotto {
-  margin-top: 200px;
+    margin-top: 200px;
 }
+
+.button-group {
+    width: 400rpx;
+    margin-top: 200rpx;
+}
+

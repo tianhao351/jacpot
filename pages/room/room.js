@@ -63,6 +63,12 @@ Page({
     getGameResult: function (resultData) {
         let gameResult = resultData.data[openid];
         let msgId = resultData._id;
+        for (x in app.globalData.playerList) {
+            let openidItem = app.globalData.playerList[x].openid
+            app.globalData.playerList[x].gameResult = resultData.data[openidItem]
+        }
+
+        console.log(app.globalData.playerList)
 
         clearTimeout(intervalPlayerID)
         clearTimeout(intervalMsgsID)
@@ -133,6 +139,8 @@ Page({
                     self.setData({
                         playerList: res.data.data
                     });
+                    app.globalData.playerArray = res.data.data
+                    console.log(app.globalData)
                 }
                 else {
                     wx.showToast({
@@ -147,12 +155,12 @@ Page({
         intervalPlayerID = setInterval(function () {
             requestTools.requestUnify(pollReqPlayer)
         }
-            , 2000);
+            , 1000);
 
         intervalMsgsID = setInterval(function () {
             requestTools.requestUnify(pollReqMsgs)
         }
-            , 2000);
+            , 1000);
     },
 
     /**
@@ -211,6 +219,26 @@ Page({
                     console.log('readyyyyyy', res.data);
                     self.setData({
                         ready: 1
+                    });
+                }
+                else {
+                }
+            }
+
+        })
+    },
+    tapToUnReady: function () {
+        requestTools.requestUnify({
+            path: 'rp_api/game/update_player_status',
+            data: {
+                status: 0
+            },
+            success(res) {
+                console.log(res.data)
+                if (res.data.success === true) {
+                    console.log('unreadyyyyyy', res.data);
+                    self.setData({
+                        ready: 0
                     });
                 }
                 else {

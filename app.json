@@ -8,9 +8,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#ff852e",
     "navigationBarTitleText": "转盘游戏",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"
 }

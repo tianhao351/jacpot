@@ -1,4 +1,11 @@
 /**app.wxss**/
+page {
+    height: 100%;
+    overflow: hidden;
+    /* linear-gradient(45deg, #7A88FF, #7AFFAF); */
+    background: linear-gradient(to bottom, rgb(255, 133, 46), rgb(161, 11, 74))
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -7,7 +14,31 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
+
+button {
+    width: 65%;
+    margin-top: 50rpx;
+    background-color: transparent;
+    color: rgb(224, 164, 58);
+    border-radius: 98rpx;
+    border: solid 1rpx rgb(224, 164, 58);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-style {
+    color: rgba(161, 11, 73, 0.655);
+}
+
+.enter-input {
+    color: #fff;
+    width: 450rpx;
+    border-bottom: 2rpx solid #fff;
+    margin: 70rpx auto;
+}
 
 .userinfo {
   display: flex;
@@ -23,5 +54,17 @@
 }
 
 .userinfo-nickname {
-  color: #aaa;
+  color: #fff;
+}
+
+
+.palyer-item {
+    height: 168rpx;
+    display: flex;
+    justify-content: space-between;
+
+}
+.palyer-item text {
+    line-height: 168rpx;
+    flex: 1;
 }
