@@ -4,11 +4,11 @@
     <view wx:if="{{type == 'create'}}">
 
         <view class="input-section">
-            <input placeholder-class="placeholder-style" id="createRoomId" class="enter-input" bindinput="bindKeyInput" placeholder="请输入创建房间号" />
+            <input placeholder-class="placeholder-style" id="createRoomId" class="enter-input" bindinput="bindKeyInput" placeholder="请输入要创建的房间号" />
         </view>
 
         <view class="input-section">
-            <input placeholder-class="placeholder-style" id="createRoomPassword" class="enter-input" bindinput="bindKeyInput" placeholder="请输入创建房间密码" />
+            <input placeholder-class="placeholder-style" id="createRoomPassword" class="enter-input" bindinput="bindKeyInput" placeholder="请输入创建房间的密码" />
         </view>
 
         <button class="btn" bindtap="createRoomReq"> 新建房间 </button>
@@ -17,11 +17,11 @@
 
     <view wx:elif="{{type == 'join'}}">
         <view class="input-section">
-            <input placeholder-class="placeholder-style" id="joinRoomId" class="enter-input" bindinput="bindKeyInput" placeholder="加入房间号" />
+            <input placeholder-class="placeholder-style" id="joinRoomId" class="enter-input" bindinput="bindKeyInput" placeholder="请输入要加入的房间号" />
         </view>
 
         <view class="input-section">
-            <input placeholder-class="placeholder-style" id="joinRoomPassword" class="enter-input" bindinput="bindKeyInput" placeholder="加入房密码" />
+            <input placeholder-class="placeholder-style" id="joinRoomPassword" class="enter-input" bindinput="bindKeyInput" placeholder="请输入加入房间的密码" />
         </view>
 
         <button class="btn" bindtap="joinRoomReq"> 加入房间 </button>

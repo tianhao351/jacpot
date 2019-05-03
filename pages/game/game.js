@@ -162,6 +162,14 @@ var page = {
         })
     },
 
+    returnRoom() {
+        console.log('返回room页')
+        wx.navigateBack({
+            delta: 1
+        })
+    },
+
+
     //分享到朋友圈
     generate() {
         wx.showLoading({

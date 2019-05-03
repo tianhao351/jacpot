@@ -61,24 +61,26 @@ Page({
     },
 
     getGameResult: function (resultData) {
+        app.globalData.playerArray = this.data.playerList;
         let gameResult = resultData.data[openid];
         let msgId = resultData._id;
-        for (x in app.globalData.playerList) {
-            let openidItem = app.globalData.playerList[x].openid
-            app.globalData.playerList[x].gameResult = resultData.data[openidItem]
+        for (let x in app.globalData.playerArray) {
+            let openidItem = app.globalData.playerArray[x].openid
+            app.globalData.playerArray[x].gameResult = resultData.data[openidItem]
+            console.log('ggggggameres===', x, app.globalData.playerArray[x].gameResult, resultData.data[openidItem])
         }
 
-        console.log(app.globalData.playerList)
+        console.log('@@###@@###', app.globalData)
 
         clearTimeout(intervalPlayerID)
         clearTimeout(intervalMsgsID)
 
         this.redMessage(msgId)
-
-
-        wx.navigateTo({
+        setTimeout(() => {
+            wx.navigateTo({
             url: '../game/game?result=' + gameResult
         })
+        },100);
 
     },
 
@@ -139,7 +141,6 @@ Page({
                     self.setData({
                         playerList: res.data.data
                     });
-                    app.globalData.playerArray = res.data.data
                     console.log(app.globalData)
                 }
                 else {

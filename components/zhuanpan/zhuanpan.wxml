@@ -1,39 +1,57 @@
 <view class="canvas-container">
-   <!-- 外围边框 -->
-   <!-- <view class='gb-wheel-run' style=''></view> -->
+    <!-- 外围边框 -->
+    <!-- <view class='gb-wheel-run' style=''></view> -->
 
-   <view animation="{{animationData}}" class="gb-wheel-content" style='width:{{size.w}}rpx;height:{{size.h}}rpx;'>
-      <!-- 扇形颜色背景 当选项长度等于2或者3时做了特殊处理 -->
-      <view class="canvas-list">
-         <view class="canvas-item2" wx:for="{{awardsConfig.awards}}" wx:key="key" style="transform: rotate({{item.item2Deg}});background-color:{{awardsConfig.awards.length==2?item.color:''}};opacity:{{awardsConfig.awards.length==2?item.opacity:awardsConfig.awards.length==3?item.opacity:''}};width:{{size.h}}rpx;height:{{size.h/2-2}}rpx;transform-origin:{{size.h/2}}rpx {{size.h/2}}rpx">
-            <view class="canvas-item2-after" style="transform: rotate({{item.afterDeg}});background-color:{{item.color}};opacity:{{awardsConfig.awards.length==3?'':item.opacity}};width:{{size.h/2}}rpx;height:{{size.h/2}}rpx;transform-origin: {{size.h/2}}rpx {{size.h/2}}rpx"></view>
-            <view wx:if='{{awardsConfig.awards.length==3}}' class="canvas-item2-after" style="background-color:{{item.color}};width:{{size.h/2}}rpx;height:{{size.h/2}}rpx;transform-origin: {{size.h/2}}rpx {{size.h/2}}rpx"></view>
-         </view>
-      </view>
+    <view animation="{{animationData}}" class="gb-wheel-content" style='width:{{size.w}}rpx;height:{{size.h}}rpx;'>
+        <!-- 扇形颜色背景 当选项长度等于2或者3时做了特殊处理 -->
+        <view class="canvas-list">
+            <view class="canvas-item2" wx:for="{{awardsConfig.awards}}" wx:key="key" style="transform: rotate({{item.item2Deg}});background-color:{{awardsConfig.awards.length==2?item.color:''}};opacity:{{awardsConfig.awards.length==2?item.opacity:awardsConfig.awards.length==3?item.opacity:''}};width:{{size.h}}rpx;height:{{size.h/2-2}}rpx;transform-origin:{{size.h/2}}rpx {{size.h/2}}rpx">
+                <view class="canvas-item2-after" style="transform: rotate({{item.afterDeg}});background-color:{{item.color}};opacity:{{awardsConfig.awards.length==3?'':item.opacity}};width:{{size.h/2}}rpx;height:{{size.h/2}}rpx;transform-origin: {{size.h/2}}rpx {{size.h/2}}rpx"></view>
+                <view wx:if='{{awardsConfig.awards.length==3}}' class="canvas-item2-after" style="background-color:{{item.color}};width:{{size.h/2}}rpx;height:{{size.h/2}}rpx;transform-origin: {{size.h/2}}rpx {{size.h/2}}rpx"></view>
+            </view>
+        </view>
 
-      <!-- 分割线 -->
-      <!-- <view class="gb-wheel-line">
+        <!-- 分割线 -->
+        <!-- <view class="gb-wheel-line">
                <view class="gb-wheel-litem" wx:for="{{awardsConfig.awards}}" wx:key='key' data-index="{{index}}" style="transform: rotate({{index*turnNum+turnNum/2}}turn);"></view>
       </view> -->
 
-      <!-- 选项内容 -->
-      <view class="gb-wheel-list">
-         <view class="gb-wheel-item" data-index="{{index}}" wx:for="{{awardsConfig.awards}}" wx:key='key'>
-            <view class="gb-wheel-icontent" style="height:262rpx;overflow:hidden;font-size:{{item.name.length>9?'20':'26'}}rpx;line-height:{{item.name.length>9?'20':'26'}}rpx;width:26rpx;padding-top:5rpx;transform: rotate({{index*turnNum}}turn);transform-origin: 50% {{size.h/2-2}}rpx">
-               <text style='word-break:break-all;'>{{item.name}}</text>
+        <!-- 选项内容 -->
+        <view class="gb-wheel-list">
+            <view class="gb-wheel-item" data-index="{{index}}" wx:for="{{awardsConfig.awards}}" wx:key='key'>
+                <view class="gb-wheel-icontent" style="height:262rpx;overflow:hidden;font-size:{{item.name.length>9?'20':'26'}}rpx;line-height:{{item.name.length>9?'20':'26'}}rpx;width:26rpx;padding-top:5rpx;transform: rotate({{index*turnNum}}turn);transform-origin: 50% {{size.h/2-2}}rpx">
+                    <text style='word-break:break-all;'>{{item.name}}</text>
+                </view>
             </view>
-         </view>
-      </view>
-   </view>
+        </view>
+    </view>
 
-   <!-- 转盘中间的按钮 -->
-   <image src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_go_unclick.png' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999' mode='widthFix'></image>
-   <!-- <image src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_go_click.png' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999;display:{{block2}}' mode='widthFix'></image>
+    <!-- 转盘中间的按钮 -->
+    <image src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_go_unclick.png' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999' mode='widthFix'></image>
+    <!-- <image src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_go_click.png' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999;display:{{block2}}' mode='widthFix'></image>
    <image bindtap="reset" src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_reset_unclick.png' style='width:{{size.h/4.4}}rpx;left:41%;top:38%;position: absolute;margin-top:-11rpx;z-index:9999;display:{{block3}}' mode='widthFix'></image>
    <image src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_reset_click.png' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999;display:{{block4}}' mode='widthFix'></image> -->
 
 </view>
 
-   <view wx:if="{{showGif}}" style='background:rgba(0,0,0,0.8);position:absolute; width:100%;height:100%;position:absolute;z-index:99999;top:0;left:0;'>
-        <image src='{{gifArray[resultNum]}}' style='width:{{size.h}}rpx;position:absolute;left:11%;top:23%;margin-top:-11rpx;z-index:99999' mode='widthFix'></image>
-   </view>  
+<view wx:if="{{showGif}}" style='background:rgba(0,0,0,0.8);position:absolute; width:100%;height:100%;position:absolute;z-index:99999;top:0;left:0;'>
+    <view class='result-container' wx:if="{{ isShowResult }}">
+
+        <text class='result-title'> 游戏结果 </text>
+
+        <view class='palyer-item' wx:key="openid" wx:for="{{playersArray}}">
+            <image class="userinfo-avatar" src="{{item.avatar_url}}" mode="cover"></image>
+            <text class="userinfo-nickname">{{item.nickname}}</text>
+            <text class="status"> {{resultArray[item.gameResult]}} </text>
+
+        </view>
+    </view>
+
+    <image wx:else src='{{gifArray[resultNum]}}' style='width:{{size.h}}rpx;position:absolute;left:11%;top:20%;margin-top:-11rpx;z-index:99999' mode='widthFix'></image>
+
+
+
+    <button style='position:absolute;left:17%;bottom:15%;margin-top:-11rpx;z-index:99999' bindtap="showResult"> 查看结果 </button>
+
+    <button style='position:absolute;left:17%;bottom:5%;margin-top:-11rpx;z-index:99999' bindtap="returnRoom"> 返回 </button>
+</view>

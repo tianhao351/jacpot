@@ -1,6 +1,4 @@
 <!--pages/game/game.wxml-->
-<text>pages/game/game.wxml</text>
-
   <view class="container">
        <zhuanpan id='zhuanpan' 
         bind:myData='getData' 
@@ -12,9 +10,10 @@
         repeat='{{repeat}}' 
         zhuanpanArr='{{xiaojuedingArr}}' 
         awardsConfig='{{awardsConfig}}'
-        resultNum='{{resultNum}}'>
+        resultNum='{{resultNum}}'
+        bind:returnRoom='returnRoom'>
 
         </zhuanpan>
 
-        
+
   </view>

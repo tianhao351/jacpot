@@ -40,6 +40,11 @@ Component({
             value: true
         },
 
+        isShowResult: {
+            type: Boolean, // 转盘声音开关，默认true
+            value: false
+        },
+
         fastJuedin: {
             type: Boolean, // 快速转动转盘的开关，默认false
             value: false
@@ -61,6 +66,11 @@ Component({
                 w: 659, // 注意宽要比高小1rpx
                 h: 660
             }
+        },
+
+        playersArray: {
+            type: Array, // 转盘大小，宽高单位rpx
+            value: []
         },
 
         zhuanpanArr: { // 可以切换的转盘选项, 支持多个
@@ -95,6 +105,16 @@ Component({
                 'http://rp.nladuo.cn/rp_api/static/taijian.gif',
                 'http://rp.nladuo.cn/rp_api/static/gu.gif'
             ],
+        },
+
+        resultArray: {
+            type: Array,
+            value: [
+                '皇上',
+                '妃子',
+                '太监',
+                '鬼',
+            ]
         },
        
 
@@ -140,6 +160,7 @@ Component({
     //组件生命周期函数，在组件实例进入页面节点树时执行，注意此时不能调用 setData
     created: function () {
         console.log('==========created==========');
+        console.log(this.data)
 
     },
 
@@ -152,6 +173,9 @@ Component({
 
         this.setData({
             awardsConfig: this.data.zhuanpanArr[0]
+        })
+        this.setData({
+            playersArray: app.globalData.playerArray
         })
         this.initAdards();
         
@@ -396,6 +420,11 @@ Component({
             this.triggerEvent('myData', this.data.awardsConfig);// 向父组件传出当前决定的数组数据
         },
 
+    // 返回上一层
+        returnRoom() {
+            this.triggerEvent('returnRoom');
+        },
+
         //当前转盘的结果   e:转盘什么时候能点击的标志位
         _myAwards(e) {
             this.triggerEvent('myAwards',
@@ -408,6 +437,12 @@ Component({
         _setatZhuan(e) {
             this.triggerEvent('startZhuan', e); // 向父组件传出当前决定的数组数据
         },
+
+        showResult() {
+            this.setData({
+                isShowResult: true
+            })
+        }
 
     }
 })

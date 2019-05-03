@@ -92,3 +92,67 @@
    text-align: center;
    transform-origin: 50% 328rpx;
 }
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #fff;
+}
+
+.result-title {
+    color: #fff;
+    display: inline-block;
+    margin-top: 60rpx;
+    margin-bottom: 30rpx;
+}
+
+.result-container {
+    width: 80%;
+    text-align:center;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.palyer-item {
+    border-bottom: 1rpx solid #fff;
+    display: flex;
+    height: 169rpx;
+    justify-content: space-between;
+}
+.palyer-item text {
+    flex: 1;
+    line-height: 169rpx;
+}
+
+.status {
+    color: #fff;
+}
+
+
+.room-title{
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 50rpx;
+    
+}
+.player-list{
+    flex: 2;
+    width: 100%;
+
+}
+.button-group{
+    flex: 1;
+    width: 100%;
+
+}
