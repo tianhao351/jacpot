@@ -51,7 +51,7 @@
 
 
 
-    <button style='position:absolute;left:17%;bottom:15%;margin-top:-11rpx;z-index:99999' bindtap="showResult"> 查看结果 </button>
+    <button wx:if="{{!isShowResult}}" style='position:absolute;left:17%;bottom:15%;margin-top:-11rpx;z-index:99999' bindtap="showResult"> 查看结果 </button>
 
     <button style='position:absolute;left:17%;bottom:5%;margin-top:-11rpx;z-index:99999' bindtap="returnRoom"> 返回 </button>
 </view>

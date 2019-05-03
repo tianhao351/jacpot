@@ -119,6 +119,8 @@
 
 .result-container {
     width: 80%;
+    height: 73%;
+    overflow: auto;
     text-align:center;
     margin-right: 10%;
     margin-left: 10%;

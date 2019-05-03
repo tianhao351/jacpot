@@ -27,7 +27,8 @@
 .room-title{
     color: #fff;
     display: inline-block;
-    margin-bottom: 50rpx;
+    margin-top: 60rpx;
+    margin-bottom: 30rpx;
     
 }
 .player-list{
